@@ -3,8 +3,8 @@
 <mapper namespace="com.hocassian.people.mapper.web.PersonWebMapper">
 
     <select id="selectPersonWebMap" resultType="map">
-        MATCH (p1:PersonWeb)-[c:ConnectWeb]->(p2:PersonWeb)
-        RETURN p1,c,p2
+        MATCH (PersonAlpha:PersonWeb)-[Connect:ConnectWeb]->(PersonBeta:PersonWeb)
+        RETURN PersonAlpha,Connect,PersonBeta
     </select>
 
     <select id="selectPersonWebList" resultType="com.hocassian.people.domain.web.PersonWeb">
@@ -19,6 +19,24 @@
         p.personWebField as personWebField,
         p.personWebInfo as personWebInfo,
         p.personWebKey as personWebKey
+    </select>
+
+    <select id="selectPersonWebSearchList" parameterType="String" resultType="com.hocassian.people.domain.web.PersonWeb">
+        MATCH (p:PersonWeb)
+        where p.personWebName Contains #{personWebName}
+        RETURN
+        p.personWebId as personWebId,
+        p.personWebName as personWebName
+    </select>
+
+    <select id="selectPersonWebSearchListOther" resultType="com.hocassian.people.domain.web.PersonWeb">
+        MATCH (pc:PersonWeb {
+        personWebId: #{personWebId}
+        })-[:ConnectWeb]-(p:PersonWeb)
+        where p.personWebName Contains #{personWebName}
+        RETURN
+        p.personWebId as personWebId,
+        p.personWebName as personWebName
     </select>
 
     <select id="selectPersonWebById" parameterType="String" resultType="com.hocassian.people.domain.web.PersonWeb">

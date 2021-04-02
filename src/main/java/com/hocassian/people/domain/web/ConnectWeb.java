@@ -14,9 +14,9 @@ public class ConnectWeb {
 
     private String connectWebInfo;
 
-    private String personStoryIdAlpha;
+    private String personWebIdAlpha;
 
-    private String personStoryIdBeta;
+    private String personWebIdBeta;
 
     public String getConnectWebId() {
         return connectWebId;
@@ -42,20 +42,20 @@ public class ConnectWeb {
         this.connectWebInfo = connectWebInfo;
     }
 
-    public String getPersonStoryIdAlpha() {
-        return personStoryIdAlpha;
+    public String getPersonWebIdAlpha() {
+        return personWebIdAlpha;
     }
 
-    public void setPersonStoryIdAlpha(String personStoryIdAlpha) {
-        this.personStoryIdAlpha = personStoryIdAlpha;
+    public void setPersonWebIdAlpha(String personWebIdAlpha) {
+        this.personWebIdAlpha = personWebIdAlpha;
     }
 
-    public String getPersonStoryIdBeta() {
-        return personStoryIdBeta;
+    public String getPersonWebIdBeta() {
+        return personWebIdBeta;
     }
 
-    public void setPersonStoryIdBeta(String personStoryIdBeta) {
-        this.personStoryIdBeta = personStoryIdBeta;
+    public void setPersonWebIdBeta(String personWebIdBeta) {
+        this.personWebIdBeta = personWebIdBeta;
     }
 
     @Override
@@ -64,8 +64,8 @@ public class ConnectWeb {
                 "connectWebId='" + connectWebId + '\'' +
                 ", connectWebName='" + connectWebName + '\'' +
                 ", connectWebInfo='" + connectWebInfo + '\'' +
-                ", personStoryIdAlpha='" + personStoryIdAlpha + '\'' +
-                ", personStoryIdBeta='" + personStoryIdBeta + '\'' +
+                ", personWebIdAlpha='" + personWebIdAlpha + '\'' +
+                ", personWebIdBeta='" + personWebIdBeta + '\'' +
                 '}';
     }
 }

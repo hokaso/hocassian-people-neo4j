@@ -41,6 +41,16 @@ public class WebService {
         return personWebMapper.selectPersonWebList();
     }
 
+    public List<PersonWeb> selectPersonWebSearchList(String personWebName) {
+//        System.out.println(personWebName);
+        return personWebMapper.selectPersonWebSearchList(personWebName);
+    }
+
+    public List<PersonWeb> selectPersonWebSearchListOther(String personWebName, String personWebId) {
+//        System.out.println(personWebName);
+        return personWebMapper.selectPersonWebSearchListOther(personWebName, personWebId);
+    }
+
     public PersonWeb selectPersonWebById(String personWebId) {
 
         return personWebMapper.selectPersonWebById(personWebId);

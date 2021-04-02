@@ -37,6 +37,18 @@ public class WebController extends BaseController {
         return getDataResult(list);
     }
 
+    @GetMapping("/search/{personWebName}")
+    public Result getPersonWebSearchList(@PathVariable("personWebName") String personWebName) {
+        List<PersonWeb> list = webService.selectPersonWebSearchList(personWebName);
+        return getDataResult(list);
+    }
+
+    @GetMapping("/search/{personWebId}/{personWebName}")
+    public Result getPersonWebSearchListOther(@PathVariable("personWebName") String personWebName, @PathVariable("personWebId") String personWebId) {
+        List<PersonWeb> list = webService.selectPersonWebSearchListOther(personWebName, personWebId);
+        return getDataResult(list);
+    }
+
     @GetMapping(value = "/person/{personWebId}")
     public AjaxResult getPersonWebInfo(@PathVariable("personWebId") String personWebId) {
         return AjaxResult.success(webService.selectPersonWebById(personWebId));

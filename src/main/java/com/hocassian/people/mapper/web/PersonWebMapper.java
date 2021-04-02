@@ -27,6 +27,20 @@ public interface PersonWebMapper {
     List<PersonWeb> selectPersonWebList();
 
     /**
+     * 查询全部（搜索使用）
+     *
+     * @return List格式的列表（搜索使用）
+     */
+    List<PersonWeb> selectPersonWebSearchList(String personWebName);
+
+    /**
+     * 查询全部（搜索使用）
+     *
+     * @return List格式的列表（搜索使用）
+     */
+    List<PersonWeb> selectPersonWebSearchListOther(String personWebName, String personWebId);
+
+    /**
      * 查询单个节点信息
      *
      * @param personWebId 节点id
