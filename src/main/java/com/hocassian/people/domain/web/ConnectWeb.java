@@ -18,6 +18,26 @@ public class ConnectWeb {
 
     private String personWebIdBeta;
 
+    private String personWebIdAlphaName;
+
+    private String personWebIdBetaName;
+
+    public String getPersonWebIdAlphaName() {
+        return personWebIdAlphaName;
+    }
+
+    public void setPersonWebIdAlphaName(String personWebIdAlphaName) {
+        this.personWebIdAlphaName = personWebIdAlphaName;
+    }
+
+    public String getPersonWebIdBetaName() {
+        return personWebIdBetaName;
+    }
+
+    public void setPersonWebIdBetaName(String personWebIdBetaName) {
+        this.personWebIdBetaName = personWebIdBetaName;
+    }
+
     public String getConnectWebId() {
         return connectWebId;
     }
@@ -66,6 +86,8 @@ public class ConnectWeb {
                 ", connectWebInfo='" + connectWebInfo + '\'' +
                 ", personWebIdAlpha='" + personWebIdAlpha + '\'' +
                 ", personWebIdBeta='" + personWebIdBeta + '\'' +
+                ", personWebIdAlphaName='" + personWebIdAlphaName + '\'' +
+                ", personWebIdBetaName='" + personWebIdBetaName + '\'' +
                 '}';
     }
 }

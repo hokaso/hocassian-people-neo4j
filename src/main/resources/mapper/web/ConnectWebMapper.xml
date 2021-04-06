@@ -11,7 +11,9 @@
         c.connectWebName as connectWebName,
         c.connectWebInfo as connectWebInfo,
         m.personWebId as personWebIdAlpha,
-        n.personWebId as personWebIdBeta
+        m.personWebName as personWebIdAlphaName,
+        n.personWebId as personWebIdBeta,
+        n.personWebName as personWebIdBetaName
     </select>
 
     <insert id="insertConnectWeb" parameterType="com.hocassian.people.domain.web.ConnectWeb">
@@ -31,11 +33,12 @@
         MATCH (m)-[c:ConnectWeb{
         connectWebId: #{connectWebId}
         }]->(n)
-        SET
-        c.connectWebName = #{connectWebName},
-        c.connectWebInfo = #{connectWebInfo},
-        m.personWebId = #{personWebIdAlpha},
-        n.personWebId = #{personWebIdBeta}
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="connectWebName != null">c.connectWebName = #{connectWebName},</if>
+            <if test="connectWebInfo != null">c.connectWebInfo = #{connectWebInfo},</if>
+            <if test="personWebIdAlpha != null">m.personWebId = #{personWebIdAlpha},</if>
+            <if test="personWebIdBeta != null">n.personWebId = #{personWebIdBeta},</if>
+        </trim>
     </update>
 
     <delete id="deleteConnectWeb" parameterType="String">
