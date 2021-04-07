@@ -66,7 +66,12 @@ public class WebController extends BaseController {
 
     @DeleteMapping("/person/{personWebId}")
     public AjaxResult removePersonWeb(@PathVariable String personWebId) {
-        return toAjax(webService.deletePersonWeb(personWebId));
+        try{
+            int rsg = webService.deletePersonWeb(personWebId);
+            return toAjax(rsg);
+        } catch (Exception e){
+            return AjaxResult.error(500, "此节点仍与其他节点有关联关系！");
+        }
     }
 
     @GetMapping(value = "/connect/{connectWebId}")
