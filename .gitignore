@@ -32,3 +32,4 @@ logs/
 .vscode/
 
 src/main/resources/application.yml
+

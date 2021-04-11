@@ -1,0 +1,52 @@
+base:
+  # 文件路径请按自己本地情况来设置，设置哪个就把哪个填入下边的profile中
+  # mac：/Users/bytedance/Desktop/file/upload
+  # win：D:/File/test
+  # linux：/home
+  profile: /Users/bytedance/Desktop/file/upload
+server:
+  port: 8081
+  servlet:
+    context-path: /
+spring:
+#  profiles: dev # 环境,  会自动引入 application-*.yml 的配置,  上线只用改这个或在启动时添加参数 --spring.profiles=pro
+  application:
+    name: hocassian-people-neo4j
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: org.neo4j.jdbc.bolt.BoltDriver
+    # 在本地调试后端时启用这个（请改为自己neo4j服务器的ip:port）
+    url: jdbc:neo4j:bolt://192.168.10.99:7687
+    # 打包放服务器上运行时启用这个
+#    url: jdbc:neo4j:bolt://127.0.0.1:7687
+    username: neo4j
+    # 请填写你自己的密码
+    password:
+#   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    validationQuery: match (n) return id(n) limit 2
+    testWhileIdle: false
+    testOnBorrow: false
+    testOnReturn: false
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    # 配置一个连接在池中最大生存的时间，单位是毫秒
+    maxEvictableIdleTimeMillis: 900000
+    poolPreparedStatements: true
+
+mybatis:
+  mapper-locations: classpath*:/mapper/**/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+
+logging:
+  config: classpath:logback-spring.xml
