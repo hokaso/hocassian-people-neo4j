@@ -24,3 +24,6 @@ https://bytedance.feishu.cn/docs/doccnFWmivHblarejnUNdeWwyVg#Q5JSLz
 
 推荐运行环境：Ubuntu 20.04 运存4G及以上
 
+**鸣谢**
+
+前后端均使用了[若依管理系统框架](https://doc.ruoyi.vip/)的代码，在此处感谢&安利下，用他们家的框架构建web应用程序真的超级快！
