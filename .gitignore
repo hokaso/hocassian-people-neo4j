@@ -26,6 +26,7 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+!neo4j-nosql-front/build/
 logs/
 
 ### VS Code ###
