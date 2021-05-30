@@ -8,6 +8,7 @@ import com.hocassian.people.transport.AjaxResult;
 import com.hocassian.people.transport.Result;
 import org.neo4j.driver.Record;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,45 +26,53 @@ public class WebController extends BaseController {
     @Autowired
     private WebService webService;
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping("/map")
     public Result getPersonWebMap() {
         List<Record> list = webService.selectPersonWebMap();
         return getDataResult(list);
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping("/list")
     public Result getPersonWebList() {
         List<PersonWeb> list = webService.selectPersonWebList();
         return getDataResult(list);
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping("/search/{personWebName}")
     public Result getPersonWebSearchList(@PathVariable("personWebName") String personWebName) {
         List<PersonWeb> list = webService.selectPersonWebSearchList(personWebName);
         return getDataResult(list);
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping("/search/{personWebId}/{personWebName}")
     public Result getPersonWebSearchListOther(@PathVariable("personWebName") String personWebName, @PathVariable("personWebId") String personWebId) {
         List<PersonWeb> list = webService.selectPersonWebSearchListOther(personWebName, personWebId);
         return getDataResult(list);
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping(value = "/person/{personWebId}")
     public AjaxResult getPersonWebInfo(@PathVariable("personWebId") String personWebId) {
         return AjaxResult.success(webService.selectPersonWebById(personWebId));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @PostMapping("/person")
     public AjaxResult addPersonWeb(@RequestBody PersonWeb personWeb) {
         return toAjax(webService.insertPersonWeb(personWeb));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @PutMapping("/person")
     public AjaxResult editPersonWeb(@RequestBody PersonWeb personWeb) {
         return toAjax(webService.updatePersonWeb(personWeb));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @DeleteMapping("/person/{personWebId}")
     public AjaxResult removePersonWeb(@PathVariable String personWebId) {
         try{
@@ -74,21 +83,25 @@ public class WebController extends BaseController {
         }
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @GetMapping(value = "/connect/{connectWebId}")
     public AjaxResult getInfoConnectWeb(@PathVariable("connectWebId") String connectWebId) {
         return AjaxResult.success(webService.selectConnectWebById(connectWebId));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @PostMapping("/connect")
     public AjaxResult addConnectWeb(@RequestBody ConnectWeb connectWeb) {
         return toAjax(webService.insertConnectWeb(connectWeb));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @PutMapping("/connect")
     public AjaxResult editConnectWeb(@RequestBody ConnectWeb connectWeb) {
         return toAjax(webService.updateConnectWeb(connectWeb));
     }
 
+    @PreAuthorize("@ss.hasPermi('*:*:*')")
     @DeleteMapping("/connect/{connectWebId}")
     public AjaxResult removeConnectWeb(@PathVariable String connectWebId) {
         return toAjax(webService.deleteConnectWeb(connectWebId));
