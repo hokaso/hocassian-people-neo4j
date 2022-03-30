@@ -1287,6 +1287,7 @@
     width: 100%;
     height: 100%;
   }
+
   .image-preview .image-preview-wrapper img {
     width: 100%;
     height: 100%;
@@ -1358,6 +1359,7 @@
     padding: 32px;
     background-color: rgb(240, 242, 245);
     position: relative;
+
     .chart-wrapper {
       background: #fff;
       padding: 16px 16px 0;
